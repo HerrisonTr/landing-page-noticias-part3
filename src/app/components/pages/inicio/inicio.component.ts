@@ -37,8 +37,7 @@ export class InicioComponent implements OnInit {
   }
 
   detalhes(noticia: Noticia){
-    this.router.navigateByUrl('detalhes', {
-      state: noticia
-    })
+    this.noticiaService.setNoticia(noticia);
+    this.router.navigateByUrl('detalhes')
   }
 }

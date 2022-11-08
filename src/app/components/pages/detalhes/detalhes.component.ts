@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Noticia } from 'src/app/models/noticia';
 import { NoticiaService } from 'src/app/services/noticia.service';
 
 @Component({
@@ -8,10 +9,13 @@ import { NoticiaService } from 'src/app/services/noticia.service';
   styleUrls: ['./detalhes.component.css']
 })
 export class DetalhesComponent implements OnInit {
-
-  constructor(private noticia: NoticiaService, private router: Router) { 
-    const nav = this.router.getCurrentNavigation();
-    console.log(nav?.extras.state)
+  noticia = {} as Noticia;
+  
+  constructor(private noticiaService: NoticiaService, private router: Router) { 
+    this.noticia = noticiaService.getNoticia();
+    if(!this.noticia.createdAt){
+      this.router.navigateByUrl('')
+    }
   }
 
   ngOnInit(): void {

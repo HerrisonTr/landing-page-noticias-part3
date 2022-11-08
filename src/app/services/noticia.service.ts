@@ -9,6 +9,7 @@ import { Noticia } from '../models/noticia';
 })
 
 export class NoticiaService {
+  noticia = {} as Noticia;
   url = 'https://5cf9ae9df26e8c00146cff8d.mockapi.io/api/v1/post/'; // api rest fake
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
@@ -34,8 +35,15 @@ export class NoticiaService {
   }
 
   // Cadastra nova notícias
-  cadastrarNoticia(noticia: Noticia) : Observable<any>{
+  cadastrarNoticia(noticia: Noticia): Observable<any> {
     return this.httpClient.post(this.url, noticia)
+  }
+
+  getNoticia() {
+    return this.noticia;
+  }
+  setNoticia(noticia: Noticia) {
+    this.noticia = noticia;
   }
 
   // Manipulação de erros

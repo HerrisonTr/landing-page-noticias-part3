@@ -5,10 +5,11 @@ h1 {
     text-align: center;
 }
 form{
-    width: 600px;
+    max-width: 600px;
     margin: 2em auto;
 }
 .form-group{
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -19,19 +20,32 @@ form{
     margin-bottom: .3em;
 }
 .form-group input, .form-group textarea{
-    padding: .5em;
-    color: #777;
-    font-size: 0.8em;
+    width: 100%;
+    border: 1px solid #ccc;
+    text-indent: 10px;
+    padding: 10px 0px 10px 0px;
+    border-radius: .4em;
+    margin-top: 5px;
 }
+.form-group textarea{
+    min-height: 200px;
+}
+.form-group input:focus, .form-group textarea:focus {
+    outline: none !important;
+    border: 1px solid rgb(143, 143, 143);
+}
+
 button{
     background-color: #777;
+    border-radius: 5px;
+    border:1px solid rgb(73, 73, 73);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 10px 15px;
     cursor: pointer;
     transition: .4s;
     font-weight: bold;
-    font-size: .8em;
+    font-size: .9em;
     float: right;
 }
 button:hover{

@@ -6,16 +6,16 @@
     <main id="content">
         <section id="section-flex">
             <div class="card" *ngFor="let noticia of noticias">
-                <div class='card-image'>
+                <figure class='card-image'>
                     <img [src]="noticia.image" *ngIf="noticia.image" onError="this.src = 'assets/img/noimage.jpg'"
                         alt={{noticia.title}}>
-                </div>
+                </figure>
                 <div class="card-body">
                     <div class="titulo">
-                        <h3 *ngIf="noticia.title"> {{noticia.title}} </h3>
+                        <h3 *ngIf="noticia.title"> {{noticia.title.substring(0, 80)}}<span *ngIf="noticia.title.length > 80">...</span> </h3>
                     </div>
                     <div class="corpo">
-                        <p *ngIf="noticia.body">{{noticia.body.substring(0, 120)}}...</p>
+                        <p *ngIf="noticia.body">{{noticia.body.substring(0, 120)}}<span *ngIf="noticia.body.length > 120">...</span></p>
                     </div>
                     <div class="lermais">
                         <a (click)="detalhes(noticia)"> Ler mais </a>
@@ -25,15 +25,6 @@
         </section>
     </main>
     <aside>
-        <nav>
-            <span class="small"> Categorias </span>
-            <ul class="categorias">
-                <li> Lorem ipsum dolor </li>
-                <li> Lorem ipsum dolor </li>
-                <li> Lorem ipsum dolor </li>
-                <li> Lorem ipsum dolor </li>
-            </ul>
-        </nav>
         <div class="box-search">
             <span class="small"> Procurando alguma notícia? </span>
             <input #titulo (keyup)="getNoticiaBusca(titulo.value)" class="search" placeholder="Pesquisar por...">
