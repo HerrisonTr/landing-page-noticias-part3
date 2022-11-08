@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NoticiaService } from 'src/app/services/noticia.service';
 
 @Component({
   selector: 'app-detalhes',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetalhesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private noticia: NoticiaService, private router: Router) { 
+    const nav = this.router.getCurrentNavigation();
+    console.log(nav?.extras.state)
+  }
 
   ngOnInit(): void {
   }

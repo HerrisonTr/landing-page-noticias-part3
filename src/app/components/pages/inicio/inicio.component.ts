@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NoticiaService } from '../../../services/noticia.service';
 import { Noticia } from '../../../models/noticia';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -14,7 +15,7 @@ export class InicioComponent implements OnInit {
   noticias: Noticia[] | undefined;
   total = 0 ;
 
-  constructor(private noticiaService: NoticiaService) { }
+  constructor(private noticiaService: NoticiaService, private router: Router) { }
 
   ngOnInit() {
     this.getNoticias();
@@ -33,5 +34,11 @@ export class InicioComponent implements OnInit {
       this.noticias = noticias;
       this.total = noticias.length
     });
+  }
+
+  detalhes(noticia: Noticia){
+    this.router.navigateByUrl('detalhes', {
+      state: noticia
+    })
   }
 }

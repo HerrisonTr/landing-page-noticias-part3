@@ -1,1 +1,16 @@
-<p>nova-noticia works!</p>
+<h1> Cadastrar nova notícia </h1>
+<form>
+    <div class="form-group">
+        <label for="title"> Titulo </label>
+        <input type="text" id="title" name="title" [(ngModel)]="noticia.title" required placeholder="Digite um título para a notícia">
+    </div>
+    <div class="form-group">
+        <label for="body"> Conteudo / Corpo da níticia </label>
+        <textarea id="body" name="body" [(ngModel)]="noticia.body" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="image"> Acrescente uma foto a sua nova postagem </label>
+        <input type="text" id="image" name="image" [(ngModel)]="noticia.image" required placeholder="Digite a URL da imagem">
+    </div>
+    <button type="button" (click)="cadastrar()"> Cadastrar </button>
+</form>

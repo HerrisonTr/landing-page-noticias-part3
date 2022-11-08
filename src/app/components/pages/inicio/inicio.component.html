@@ -18,7 +18,7 @@
                         <p *ngIf="noticia.body">{{noticia.body.substring(0, 120)}}...</p>
                     </div>
                     <div class="lermais">
-                        <a href="#"> Ler mais </a>
+                        <a (click)="detalhes(noticia)"> Ler mais </a>
                     </div>
                 </div>
             </div>

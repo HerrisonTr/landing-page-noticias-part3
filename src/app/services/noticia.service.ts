@@ -18,7 +18,7 @@ export class NoticiaService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-  // Obtem todos os carros
+  // Obtem todos as notícias
   getNoticias(): Observable<Noticia[]> {
     return this.httpClient.get<Noticia[]>(this.url)
       .pipe(
@@ -31,6 +31,11 @@ export class NoticiaService {
       .pipe(
         retry(2),
         catchError(this.handleError))
+  }
+
+  // Cadastra nova notícias
+  cadastrarNoticia(noticia: Noticia) : Observable<any>{
+    return this.httpClient.post(this.url, noticia)
   }
 
   // Manipulação de erros
